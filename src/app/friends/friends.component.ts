@@ -38,7 +38,8 @@ export class FriendsComponent implements OnInit {
   disable = false;
   friends: String[] = [];
   show = false;
-  dataSource3_length: number[] = [];
+  //dataSource3_length: number[] = [];
+  dataSource3_length: Number;
   id: string;
   message: any;
   array: String[] = [];
@@ -129,6 +130,12 @@ export class FriendsComponent implements OnInit {
   })
 
   
+  this.socket.on('unfriended', (msg)=>{
+
+    console.log('unfriend in socket')
+    this.chatService.getUsers(localStorage.getItem('name')).subscribe(response => this.handleSuccessfulResponse2(response))
+
+  })
   }
   
 
@@ -172,15 +179,16 @@ export class FriendsComponent implements OnInit {
       this.sentRequests = (this.newFriendRequests[i].sentRequests)
       this.friends = this.newFriendRequests[i].friend;
      
+     
     }
 
+    //for (let i = 0; i < this.friends.length; i++) {
+      //this.dataSource3_length.push(i)
+    //}
    
-
-    for (let i = 0; i < this.friends.length; i++) {
-      this.dataSource3_length.push(i)
-    }
-   
+    this.dataSource3_length= this.friends.length
     this.dataSource3 = this.friends;
+    console.log('ds length', this.dataSource3_length)
 
 
   }
@@ -205,7 +213,7 @@ export class FriendsComponent implements OnInit {
 
   displayedColumns: string[] = ['First Name', 'Last Name', 'User Name', 'Add Friend'];
   displayedColumns2: string[] = ['Friend Requests', 'Confirm'];
-  displayedColumns3: string[] = ['Friends', 'Chat', 'Status'];
+  displayedColumns3: string[] = ['Friends', 'Chat', 'Status','Unfriend'];
 
 
 
@@ -303,6 +311,19 @@ export class FriendsComponent implements OnInit {
     this.router.navigate(['login'])
   }
 
+  unfriend(friend_name){
+
+    this.chatService.sendUnfriendMessage('unfriend');
+    this.friendrequestModel = new friendRequest();
+    this.friendrequestModel.username = localStorage.getItem('name');
+    this.friendrequestModel.friend = friend_name;
+
+    this.chatService.unfriend(this.friendrequestModel).subscribe(data => {
+      console.log('unfriended!!!!');
+    })
+
+    window.location.reload();
+  }
   
 
 }

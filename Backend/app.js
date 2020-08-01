@@ -93,6 +93,11 @@ app.post('/confirmRequest', (req, res, err) => {
     signup.update({ 'userName': req.body.friend }, { $pull: { 'sentRequests': req.body.username }, $push: { 'friend': req.body.username } }).then(documents => {});
 })
 
+app.post('/unfriend', (req, res, err) => {
+    signup.update({ 'userName': req.body.username }, { $pull: { 'friend': req.body.friend } }).then(documents => {});
+    signup.update({ 'userName': req.body.friend }, { $pull: { 'friend': req.body.username } }).then(documents => {});
+
+})
 
 io.on('connection', (socket) => {
 
@@ -178,6 +183,10 @@ io.on('connection', (socket) => {
             socket.leave(rooms[i]);
         }
     });
+
+    socket.on('unfriend', (msg) => {
+        io.emit('unfriended', msg)
+    })
 
 });
 

@@ -193,6 +193,11 @@ export class ChatServiceService {
    // this.socket.emit('to', username)
   }
 
+  unfriend(friendRequestModel){
+    console.log('In service', friendRequestModel)
+    return this.http.post<String>('http://localhost:3000/unfriend', friendRequestModel)
+  }
+
   disconnect(){
    this.socket.emit('disconnecting', 'disconnect_message')
   }
@@ -213,4 +218,8 @@ export class ChatServiceService {
     this.socket.emit('wantchat', msg);
   }
 
+  sendUnfriendMessage(msg)
+  {
+    this.socket.emit('unfriend', msg);
+  }
 }
