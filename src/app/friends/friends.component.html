@@ -1,0 +1,126 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<mat-toolbar>
+    <button style="margin-left: 1250px;" mat-raised-button color="warn" (click)="logout()">Logout</button>
+
+</mat-toolbar>
+
+<div class="body">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+
+    <mat-tab-group mat-stretch-tabs mat-align-tabs="start">
+        <mat-tab label="Available Profiles">
+            <div class="tabs">
+                <table class="mat-display-3" mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="First Name">
+                        <th mat-header-cell *matHeaderCellDef> Fist Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="Last Name">
+                        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="User Name">
+                        <th mat-header-cell *matHeaderCellDef> User Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="Add Friend">
+                        <th mat-header-cell *matHeaderCellDef> Send Request </th>
+                        <td mat-cell *matCellDef="let element, let i = index">
+                            <!--  <mat-icon *ngIf="checksentRequest(element.userName)" svgIcon="done"></mat-icon>-->
+
+                            <!-- <button [disabled]="checksentRequest(element.userName)" class="button1" mat-raised-button color="accent" (click)="addFriend(element.userName)">{{buttonMessage}}</button>-->
+
+                            <button [disabled]="checksentRequest(element.userName)" class="button1" mat-raised-button color="accent" (click)="addFriend(element.userName)">{{buttonMessage}}</button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </mat-tab>
+
+
+
+        <mat-tab>
+
+            <ng-template matTabLabel>
+                <span matBadge="{{incomingRequests.length}}" matBadgeOverlap="false">Incoming Requests</span>
+            </ng-template>
+
+            <div *ngIf="(dataSource2==null)"> No pending requests</div>
+            <table class="table" mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="Friend Requests">
+                    <th mat-header-cell *matHeaderCellDef> Friend Requests </th>
+                    <td mat-cell *matCellDef="let element"> {{element}} </td>
+                </ng-container>
+
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Confirm">
+                    <th mat-header-cell *matHeaderCellDef> Confirm </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button class="button1" mat-raised-button color="accent" (click)="confirm(element)">Add Freind</button>
+
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+            </table>
+        </mat-tab>
+
+
+
+        <mat-tab>
+            <ng-template matTabLabel>
+                <span matBadge="{{dataSource3_length.length}}" matBadgeOverlap="false">Friends</span>
+            </ng-template>
+
+            <table class="table" mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="Friends">
+                    <th mat-header-cell *matHeaderCellDef> Friends </th>
+                    <td mat-cell *matCellDef="let element"> {{element}} </td>
+                </ng-container>
+
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Chat">
+                    <th mat-header-cell *matHeaderCellDef> Chat </th>
+                    <td mat-cell *matCellDef="let element, let i = index">
+                        <!--  <button class="button1" id="{{i}}" mat-raised-button color="accent" (click)="chat(element, $event)">Chat</button>-->
+                        <mat-icon svgIcon="chat" id="{{i}}" (click)="chat(element, $event)"></mat-icon>
+
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element, let i = index">
+                        <div class="tooltip">
+                            <mat-icon *ngIf="element==status" style="color:lightgreen" svgIcon="online"></mat-icon><span class="tooltiptext">Online</span></div>
+
+                        <div class="tooltip">
+                            <mat-icon *ngIf="!(element==status)" style="color:red" svgIcon="online"></mat-icon><span class="tooltiptext">Offline</span></div>
+
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+            </table>
+        </mat-tab>
+    </mat-tab-group>
+    <!-- <div class="chatbox" *ngFor="let len of dataSource3_length"> -->
+    <app-dashboard *ngIf="show"></app-dashboard>
+
+</div>

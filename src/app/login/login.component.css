@@ -1,0 +1,64 @@
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: whitesmoke !important;
+}
+
+ ::ng-deep .mat-form-field-label {
+    /*change color of label*/
+    color: black !important;
+    font-weight: bolder;
+}
+
+.login-form {
+    text-align: center;
+    margin-top: -50px;
+    border: 5px solid palevioletred;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding-bottom: 100px;
+    padding-top: 30px;
+    border-style: ridge;
+    box-shadow: beige;
+    border-radius: 9px;
+}
+
+.p {
+    background: repeating-linear-gradient( -45deg, #000 0px, #000 5px, #333 6px, #333 11px, #000 12px);
+}
+
+::ng-deep .mat-input-wrapper {
+    width: 900px !important;
+}
+
+.text {
+    text-decoration: tomato;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    font: outline;
+    color: tomato;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.body {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(43, 49, 161, 0.6138830532212884) 45%, rgba(13, 144, 132, 0.5214460784313726) 100%);
+}
+
+.signupButton {
+    float: right;
+}
+
+.signupButton:active {
+    transform: translateY(2px);
+}
+
+.image {
+    /* background: url('/assets/logo.png');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;*/
+}

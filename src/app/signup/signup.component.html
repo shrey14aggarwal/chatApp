@@ -1,0 +1,38 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="body">
+    <mat-toolbar color="primary"> Signup Page
+        <div class="login"><button type="button" mat-raised-button color="accent" (click)="login()">To Login Page</button></div>
+
+    </mat-toolbar>
+    <div class="line">
+
+        <form class="signup-form">
+
+            <mat-form-field style="width:400px !important" class="firstName">
+                <mat-label>First Name</mat-label>
+                <input matInput name="firstName" [(ngModel)]="firstName">
+            </mat-form-field>
+            <br><br>
+            <mat-form-field style="width:400px !important" class="lastName">
+                <mat-label>Last Name</mat-label>
+                <input matInput name="lastName" [(ngModel)]="lastName">
+            </mat-form-field>
+            <br><br>
+            <mat-form-field style="width:400px !important" class="userName">
+                <mat-label>User Name</mat-label>
+                <input matInput name="userName" [(ngModel)]="userName">
+            </mat-form-field>
+            <br><br>
+            <mat-form-field style="width:400px !important" class="passworf">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" [(ngModel)]="password">
+            </mat-form-field>
+            <br><br>
+            <button class="button1" type="button" mat-raised-button color="accent" (click)="submit()">Submit</button>
+
+
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="image">
+    <div class="body">
+        <img src="assets/logo2.png" style="margin-top: 5px; height: 140px;    text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+        ">
+        <button mat-fab class="signupButton" type="button" mat-raised-button color="accent" (click)="signupbutton()">Signup</button>
+
+        <form class="login-form">
+            <div class="text">Log In </div><br><br>
+            <mat-form-field style="width:400px !important" class="username">
+                <mat-label>Username</mat-label>
+                <input matInput name="username" [(ngModel)]="username">
+            </mat-form-field>
+            <br><br>
+            <mat-form-field style="width:400px !important" class="password">
+                <mat-label>password</mat-label>
+                <input matInput name="password" [(ngModel)]="password">
+            </mat-form-field><br><br>
+            <button class="button1" mat-raised-button color="accent" (click)="login()">Login</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: black !important;
+}
+
+ ::ng-deep .mat-form-field-label {
+    /*change color of label*/
+    color: purple !important;
+}
+
+.signup-form {
+    text-align: center;
+    margin-top: 70px;
+    border: 4px solid hotpink;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    z-index: 2000;
+}
+
+.body {
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 0.4150035014005602) 0%, rgba(29, 253, 40, 0.21052170868347342) 50%, rgba(252, 176, 69, 0.7343312324929971) 100%);
+    height: 100%;
+}
+
+.login {
+    float: right;
+    position: fixed;
+    left: 1200px
+}

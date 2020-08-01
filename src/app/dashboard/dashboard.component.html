@@ -1,0 +1,17 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<hr class="line">
+
+<form class="example-form" id="form">
+    <textarea class="textarea" id="textarea" rows="27" cols="73" readonly>
+  
+  </textarea>
+    <br>
+
+    <mat-form-field style="z-index:1000; width:300px" class="example-full-width">
+        <mat-label>Type a message...</mat-label>
+        <input id="input" matInput [(ngModel)]="message" name="message" id="message">
+    </mat-form-field><br>
+    <button class="button1" id="button1" mat-raised-button color="accent" (click)="sendMessage()">Send</button><br>
+    <button class="button2" id="button2" mat-raised-button color="warn" (click)="close()">Close</button>
+
+</form>
